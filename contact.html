@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact FrameX - Get Your Quote Today</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5682B1',
+                        secondary: '#739EC9',
+                        accent: '#FFE8DB',
+                        'neutral-dark': '#1A1A1A',
+                        'neutral-light': '#F5F5F5'
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter text-neutral-dark">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm md:top-4 md:left-1/2 md:transform md:-translate-x-1/2 md:w-auto md:bg-white/30 md:backdrop-blur-md md:shadow-lg md:rounded-full md:px-6 md:py-3 nav-animated">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:max-w-none md:mx-0 md:px-0">
+            <div class="flex justify-between items-center h-16 md:h-auto">
+                <a href="index.html#home" class="font-poppins font-bold text-2xl text-primary md:text-xl md:mr-8">FrameX</a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-neutral-dark hover:text-primary transition-all duration-300 hover:scale-105 nav-link">Home</a>
+                    <a href="index.html#services" class="text-neutral-dark hover:text-primary transition-all duration-300 hover:scale-105 nav-link">Services</a>
+                    <a href="index.html#pricing" class="text-neutral-dark hover:text-primary transition-all duration-300 hover:scale-105 nav-link">Pricing</a>
+                    <a href="index.html#portfolio" class="text-neutral-dark hover:text-primary transition-all duration-300 hover:scale-105 nav-link">Portfolio</a>
+                    <a href="contact.html" class="text-primary font-semibold hover:scale-105 transition-all duration-300 nav-link">Contact</a>
+                </div>
+                <a href="index.html" class="md:hidden bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition-all duration-300 font-medium">
+                    Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center overflow-hidden pt-16">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-neutral-dark via-primary to-secondary">
+            <div class="absolute inset-0 bg-black/20"></div>
+            <!-- Floating geometric shapes -->
+            <div class="absolute top-20 left-10 w-20 h-20 bg-accent/20 rounded-full animate-pulse"></div>
+            <div class="absolute top-40 right-20 w-16 h-16 bg-white/10 rounded-lg rotate-45 animate-bounce"></div>
+            <div class="absolute bottom-40 left-1/4 w-12 h-12 bg-accent/30 rounded-full animate-pulse"></div>
+            <div class="absolute bottom-20 right-1/3 w-24 h-24 bg-white/5 rounded-lg rotate-12 animate-bounce"></div>
+            <!-- Grid pattern overlay -->
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 50px 50px;"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Column - Text Content -->
+                <div class="text-white">
+                    <div class="mb-6">
+                        <span class="inline-block bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-semibold mb-4 fade-in">
+                            <i class="fas fa-rocket mr-2"></i>Ready to Launch Your Project?
+                        </span>
+                    </div>
+                    <h1 class="font-poppins font-bold text-4xl md:text-5xl lg:text-6xl mb-6 fade-in leading-tight">
+                        Let's Create Your
+                        <span class="text-accent">Digital Presence</span>
+                    </h1>
+                    <p class="font-inter text-lg md:text-xl mb-8 opacity-90 fade-in leading-relaxed">
+                        Transform your business with a stunning, high-performance website that converts visitors into customers. We're here to bring your vision to life.
+                    </p>
+                    
+                    <!-- Contact Stats -->
+                    <div class="grid grid-cols-3 gap-6 mb-8 fade-in">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-accent">24h</div>
+                            <div class="text-sm opacity-80">Response Time</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-accent">100+</div>
+                            <div class="text-sm opacity-80">Projects Done</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-accent">5★</div>
+                            <div class="text-sm opacity-80">Client Rating</div>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 fade-in">
+                        <a href="#contactForm" class="bg-accent text-neutral-dark px-8 py-4 rounded-lg font-poppins font-semibold hover:bg-accent/90 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            <i class="fas fa-paper-plane mr-2"></i>Get Free Quote
+                        </a>
+                        <a href="https://wa.me/1234567890" target="_blank" class="border-2 border-white text-white px-8 py-4 rounded-lg font-poppins font-semibold hover:bg-white hover:text-neutral-dark transition-all duration-300 transform hover:scale-105">
+                            <i class="fab fa-whatsapp mr-2"></i>Quick Chat
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Right Column - Visual Elements -->
+                <div class="relative fade-in">
+                    <!-- Main visual container -->
+                    <div class="relative bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                        <!-- Contact form preview -->
+                        <div class="bg-white rounded-xl p-6 shadow-2xl">
+                            <div class="flex items-center mb-4">
+                                <div class="w-3 h-3 bg-red-400 rounded-full mr-2"></div>
+                                <div class="w-3 h-3 bg-yellow-400 rounded-full mr-2"></div>
+                                <div class="w-3 h-3 bg-green-400 rounded-full mr-4"></div>
+                                <div class="text-sm text-gray-500">Contact Form</div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="h-3 bg-gray-200 rounded w-3/4"></div>
+                                <div class="h-3 bg-gray-200 rounded w-1/2"></div>
+                                <div class="h-8 bg-primary rounded w-full"></div>
+                                <div class="h-3 bg-gray-200 rounded w-2/3"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating elements -->
+                        <div class="absolute -top-4 -right-4 bg-accent text-neutral-dark p-3 rounded-full shadow-lg animate-bounce">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </div>
+                        <div class="absolute -bottom-4 -left-4 bg-green-500 text-white p-3 rounded-full shadow-lg animate-pulse">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Background decorative elements -->
+                    <div class="absolute -z-10 top-10 -right-10 w-32 h-32 bg-accent/20 rounded-full blur-xl"></div>
+                    <div class="absolute -z-10 -bottom-10 -left-10 w-40 h-40 bg-primary/20 rounded-full blur-xl"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <div class="flex flex-col items-center">
+                <span class="text-sm mb-2 opacity-70">Scroll to contact form</span>
+                <i class="fas fa-chevron-down text-xl"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="py-20 bg-neutral-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-poppins font-bold text-4xl md:text-5xl mb-6 text-neutral-dark">Get In Touch</h2>
+                <p class="font-inter text-xl text-gray-600 max-w-3xl mx-auto">Choose your preferred way to connect with us. We're here to help bring your vision to life.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 stagger-animation">
+                <!-- Email Contact -->
+                <div class="bg-white rounded-xl p-8 shadow-lg slide-in-left hover-lift-strong hover-glow text-center magnetic">
+                    <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 hover-bounce">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl mb-4">Email Us</h3>
+                    <p class="text-gray-600 mb-4">Send us a detailed message about your project</p>
+                    <a href="mailto:hello@framex.com" class="text-primary hover:text-secondary transition-colors font-semibold">
+                        hello@framex.com
+                    </a>
+                    <p class="text-sm text-gray-500 mt-2">Response within 24 hours</p>
+                </div>
+
+                <!-- WhatsApp Contact -->
+                <div class="bg-white rounded-xl p-8 shadow-lg scale-in hover-lift-strong hover-glow text-center magnetic">
+                    <div class="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 hover-bounce">
+                        <i class="fab fa-whatsapp text-2xl"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl mb-4">WhatsApp</h3>
+                    <p class="text-gray-600 mb-4">Quick chat for immediate assistance</p>
+                    <a href="https://wa.me/1234567890" target="_blank" class="text-green-500 hover:text-green-600 transition-colors font-semibold">
+                        +1 (555) 123-4567
+                    </a>
+                    <p class="text-sm text-gray-500 mt-2">Available 9 AM - 6 PM EST</p>
+                </div>
+
+                <!-- Phone Contact -->
+                <div class="bg-white rounded-xl p-8 shadow-lg slide-in-right hover-lift-strong hover-glow text-center magnetic">
+                    <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 hover-bounce">
+                        <i class="fas fa-phone text-2xl"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl mb-4">Call Us</h3>
+                    <p class="text-gray-600 mb-4">Speak directly with our team</p>
+                    <a href="tel:+15551234567" class="text-primary hover:text-secondary transition-colors font-semibold">
+                        +1 (555) 123-4567
+                    </a>
+                    <p class="text-sm text-gray-500 mt-2">Mon-Fri, 9 AM - 6 PM EST</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contactForm" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-poppins font-bold text-4xl md:text-5xl mb-6 text-neutral-dark">Request a Quote</h2>
+                <p class="font-inter text-xl text-gray-600 max-w-3xl mx-auto">Tell us about your project and we'll get back to you with a detailed proposal.</p>
+            </div>
+
+            <div class="bg-neutral-light rounded-2xl p-8 md:p-12">
+                <form id="contactForm" class="space-y-6">
+                    <!-- Personal Information -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                    </div>
+
+                    <!-- Business Information -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company/Business Name</label>
+                            <input type="text" id="company" name="company" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="businessType" class="block text-sm font-medium text-gray-700 mb-2">Business Type *</label>
+                            <select id="businessType" name="businessType" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="">Select Business Type</option>
+                                <option value="small-business">Small Business</option>
+                                <option value="ecommerce">E-commerce Store</option>
+                                <option value="portfolio">Portfolio/Personal</option>
+                                <option value="corporate">Corporate</option>
+                                <option value="nonprofit">Non-Profit</option>
+                                <option value="startup">Startup</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Project Information -->
+                    <div>
+                        <label for="projectType" class="block text-sm font-medium text-gray-700 mb-2">Project Type *</label>
+                        <select id="projectType" name="projectType" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option value="">Select Project Type</option>
+                            <option value="new-website">New Website</option>
+                            <option value="website-redesign">Website Redesign</option>
+                            <option value="ecommerce-store">E-commerce Store</option>
+                            <option value="landing-page">Landing Page</option>
+                            <option value="portfolio-site">Portfolio Site</option>
+                            <option value="maintenance">Website Maintenance</option>
+                            <option value="consultation">Consultation</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="budget" class="block text-sm font-medium text-gray-700 mb-2">Budget Range</label>
+                        <select id="budget" name="budget" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option value="">Select Budget Range</option>
+                            <option value="under-500">Under $500</option>
+                            <option value="500-1000">$500 - $1,000</option>
+                            <option value="1000-2500">$1,000 - $2,500</option>
+                            <option value="2500-5000">$2,500 - $5,000</option>
+                            <option value="5000-10000">$5,000 - $10,000</option>
+                            <option value="over-10000">Over $10,000</option>
+                            <option value="discuss">Let's Discuss</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="timeline" class="block text-sm font-medium text-gray-700 mb-2">Project Timeline</label>
+                        <select id="timeline" name="timeline" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option value="">Select Timeline</option>
+                            <option value="asap">ASAP (Rush Job)</option>
+                            <option value="1-month">Within 1 Month</option>
+                            <option value="2-3-months">2-3 Months</option>
+                            <option value="3-6-months">3-6 Months</option>
+                            <option value="flexible">Flexible</option>
+                        </select>
+                    </div>
+
+                    <!-- Project Details -->
+                    <div>
+                        <label for="projectDescription" class="block text-sm font-medium text-gray-700 mb-2">Project Description *</label>
+                        <textarea id="projectDescription" name="projectDescription" rows="6" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Tell us about your project, goals, and any specific requirements..."></textarea>
+                    </div>
+
+                    <div>
+                        <label for="additionalInfo" class="block text-sm font-medium text-gray-700 mb-2">Additional Information</label>
+                        <textarea id="additionalInfo" name="additionalInfo" rows="4" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Any additional details, inspiration, or questions you'd like to share..."></textarea>
+                    </div>
+
+                    <!-- How did you hear about us -->
+                    <div>
+                        <label for="referralSource" class="block text-sm font-medium text-gray-700 mb-2">How did you hear about FrameX?</label>
+                        <select id="referralSource" name="referralSource" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option value="">Select Source</option>
+                            <option value="google">Google Search</option>
+                            <option value="social-media">Social Media</option>
+                            <option value="referral">Referral</option>
+                            <option value="portfolio">Portfolio Site</option>
+                            <option value="advertisement">Advertisement</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Privacy Policy -->
+                    <div class="flex items-start">
+                        <input type="checkbox" id="privacyPolicy" name="privacyPolicy" required class="mt-1 mr-3">
+                        <label for="privacyPolicy" class="text-sm text-gray-600">
+                            I agree to the <a href="#" class="text-primary hover:text-secondary">Privacy Policy</a> and consent to FrameX contacting me about my project. *
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center pt-6">
+                        <button type="submit" class="bg-primary text-white px-12 py-4 rounded-lg font-poppins font-semibold hover:bg-secondary transition-colors text-lg">
+                            <i class="fas fa-paper-plane mr-2"></i>Send Request
+                        </button>
+                        <p class="text-sm text-gray-500 mt-4">
+                            We'll respond within 24 hours with a detailed proposal
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-neutral-light">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-poppins font-bold text-4xl md:text-5xl mb-6 text-neutral-dark">Frequently Asked Questions</h2>
+                <p class="font-inter text-xl text-gray-600 max-w-3xl mx-auto">Quick answers to common questions about our services and process.</p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <h3 class="font-poppins font-semibold text-xl mb-3 text-neutral-dark">How long does it take to build a website?</h3>
+                    <p class="text-gray-600">The timeline depends on the complexity of your project. A simple business website typically takes 2-4 weeks, while e-commerce sites may take 4-8 weeks. We'll provide a detailed timeline during our initial consultation.</p>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <h3 class="font-poppins font-semibold text-xl mb-3 text-neutral-dark">What's included in your pricing?</h3>
+                    <p class="text-gray-600">Our pricing includes custom design, responsive development, content management system, SEO optimization, and post-launch support. Additional features like e-commerce functionality or custom integrations may have separate pricing.</p>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <h3 class="font-poppins font-semibold text-xl mb-3 text-neutral-dark">Do you provide ongoing maintenance?</h3>
+                    <p class="text-gray-600">Yes! We offer maintenance packages to keep your website updated, secure, and running smoothly. This includes regular backups, security updates, content updates, and technical support.</p>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <h3 class="font-poppins font-semibold text-xl mb-3 text-neutral-dark">Can you help with content creation?</h3>
+                    <p class="text-gray-600">While we focus on design and development, we can recommend trusted content writers and copywriters. We also provide guidance on content structure and SEO best practices.</p>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <h3 class="font-poppins font-semibold text-xl mb-3 text-neutral-dark">What happens after the website is launched?</h3>
+                    <p class="text-gray-600">We provide training on how to use your content management system, deliver all source files, and offer ongoing support. We also monitor your site for the first month to ensure everything is working perfectly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-poppins font-bold text-4xl md:text-5xl mb-6 text-white">
+                Ready to Get Started?
+            </h2>
+            <p class="font-inter text-xl mb-8 text-white opacity-90 max-w-3xl mx-auto">
+                Don't wait to transform your online presence. Contact us today and let's discuss your project.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://wa.me/1234567890" target="_blank" class="bg-white text-primary px-8 py-4 rounded-lg font-poppins font-semibold hover:bg-neutral-light transition-colors">
+                    <i class="fab fa-whatsapp mr-2"></i>Chat on WhatsApp
+                </a>
+                <a href="mailto:hello@framex.com" class="border-2 border-white text-white px-8 py-4 rounded-lg font-poppins font-semibold hover:bg-white hover:text-primary transition-colors">
+                    <i class="fas fa-envelope mr-2"></i>Send Email
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-dark text-neutral-light py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="font-poppins font-bold text-3xl text-white mb-4">FrameX</div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Creating modern, responsive websites that help businesses grow and succeed in the digital world.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/framex" target="_blank" class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-secondary transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/framex" target="_blank" class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-secondary transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-poppins font-semibold text-xl text-white mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="index.html#services" class="text-gray-300 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="index.html#pricing" class="text-gray-300 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="index.html#portfolio" class="text-gray-300 hover:text-white transition-colors">Portfolio</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-poppins font-semibold text-xl text-white mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>hello@framex.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 FrameX. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/1234567890" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors z-50">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script src="script.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>

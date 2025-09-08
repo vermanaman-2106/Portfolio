@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrameX - Modern Websites That Convert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5682B1',
+                        secondary: '#739EC9',
+                        accent: '#FFE8DB',
+                        'neutral-dark': '#1A1A1A',
+                        'neutral-light': '#F5F5F5'
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter text-neutral-dark">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm md:top-4 md:left-1/2 md:transform md:-translate-x-1/2 md:w-auto md:bg-white/30 md:backdrop-blur-md md:shadow-lg md:rounded-full md:px-6 md:py-3 nav-animated">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:max-w-none md:mx-0 md:px-0">
+            <div class="flex justify-between items-center h-16 md:h-auto">
+                <a href="#home" class="font-poppins font-bold text-2xl text-primary md:text-xl md:mr-8">FrameX</a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="text-neutral-dark hover:text-primary transition-all duration-300 hover:scale-105 nav-link">Home</a>
+                    <a href="#services" class="text-neutral-dark hover:text-primary transition-all duration-300 hover:scale-105 nav-link">Services</a>
+                    <a href="#pricing" class="text-neutral-dark hover:text-primary transition-all duration-300 hover:scale-105 nav-link">Pricing</a>
+                    <a href="#portfolio" class="text-neutral-dark hover:text-primary transition-all duration-300 hover:scale-105 nav-link">Portfolio</a>
+                    <a href="contact.html" class="text-neutral-dark hover:text-primary transition-all duration-300 hover:scale-105 nav-link">Contact</a>
+                </div>
+                <a href="contact.html" class="md:hidden bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition-all duration-300 font-medium">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-16 md:pt-0">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-neutral-dark via-primary to-secondary">
+            <div class="absolute inset-0 bg-black/20"></div>
+            <!-- Floating geometric shapes -->
+            <div class="absolute top-20 left-10 w-20 h-20 bg-accent/20 rounded-full animate-pulse"></div>
+            <div class="absolute top-40 right-20 w-16 h-16 bg-white/10 rounded-lg rotate-45 animate-bounce"></div>
+            <div class="absolute bottom-40 left-1/4 w-12 h-12 bg-accent/30 rounded-full animate-pulse"></div>
+            <div class="absolute bottom-20 right-1/3 w-24 h-24 bg-white/5 rounded-lg rotate-12 animate-bounce"></div>
+            <div class="absolute top-1/2 left-1/2 w-8 h-8 bg-accent/40 rounded-full animate-ping"></div>
+            <div class="absolute top-1/3 right-1/4 w-14 h-14 bg-white/15 rounded-lg rotate-45 animate-pulse"></div>
+            <!-- Grid pattern overlay -->
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 50px 50px;"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Column - Text Content -->
+                <div class="text-white hero-content">
+                    <div class="mb-6">
+                        <span class="inline-block bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-semibold mb-4 fade-in">
+                            <i class="fas fa-star mr-2"></i>Premium Web Development
+                        </span>
+                    </div>
+                    <h1 class="font-poppins font-bold text-4xl md:text-5xl lg:text-6xl mb-6 fade-in leading-tight">
+                        Modern Websites That
+                        <span class="text-accent">Convert Visitors Into Clients</span>
+                    </h1>
+                    <p class="font-inter text-lg md:text-xl mb-8 opacity-90 fade-in leading-relaxed">
+                        At FrameX, we craft responsive, high-performance websites that drive results. Transform your business with cutting-edge design and technology.
+                    </p>
+                    
+                    <!-- Key Features -->
+                    <div class="grid grid-cols-2 gap-4 mb-8 fade-in">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span class="text-sm">Mobile Responsive</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span class="text-sm">SEO Optimized</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span class="text-sm">Fast Loading</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-accent mr-3"></i>
+                            <span class="text-sm">Modern Design</span>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 fade-in">
+                        <a href="https://wa.me/1234567890" target="_blank" class="bg-accent text-neutral-dark px-8 py-4 rounded-lg font-poppins font-semibold hover:bg-accent/90 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            <i class="fab fa-whatsapp mr-2"></i>Chat on WhatsApp
+                        </a>
+                        <button onclick="openContactForm()" class="border-2 border-white text-white px-8 py-4 rounded-lg font-poppins font-semibold hover:bg-white hover:text-neutral-dark transition-all duration-300 transform hover:scale-105">
+                            <i class="fas fa-paper-plane mr-2"></i>Request a Quote
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Right Column - Video Element -->
+                <div class="relative fade-in">
+                    <!-- Video container -->
+                    <div class="relative bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20 video-container">
+                        <!-- Video element -->
+                        <video 
+                            id="heroVideo"
+                            class="hero-video" 
+                            autoplay 
+                            muted 
+                            loop 
+                            playsinline
+                        >
+                            <source src="Web-gallery-[remix]undefined.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        
+                        <!-- Video overlay -->
+                        <div class="video-overlay"></div>
+                        
+                        <!-- Floating elements -->
+                        <div class="absolute -top-4 -right-4 bg-accent text-neutral-dark p-3 rounded-full shadow-lg animate-bounce">
+                            <i class="fas fa-play text-xl"></i>
+                        </div>
+                        <div class="absolute -bottom-4 -left-4 bg-green-500 text-white p-3 rounded-full shadow-lg animate-pulse">
+                            <i class="fas fa-video text-xl"></i>
+                        </div>
+                        <div class="absolute top-1/2 -right-6 bg-primary text-white p-2 rounded-full shadow-lg animate-bounce">
+                            <i class="fas fa-mobile-alt text-lg"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Background decorative elements -->
+                    <div class="absolute -z-10 top-10 -right-10 w-32 h-32 bg-accent/20 rounded-full blur-xl"></div>
+                    <div class="absolute -z-10 -bottom-10 -left-10 w-40 h-40 bg-primary/20 rounded-full blur-xl"></div>
+                    <div class="absolute -z-10 top-1/2 -left-16 w-24 h-24 bg-secondary/20 rounded-full blur-xl"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <div class="flex flex-col items-center">
+                <span class="text-sm mb-2 opacity-70">Discover our services</span>
+                <i class="fas fa-chevron-down text-xl"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-neutral-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-poppins font-bold text-4xl md:text-5xl mb-6 text-neutral-dark">Why Choose FrameX?</h2>
+                <p class="font-inter text-xl text-gray-600 max-w-3xl mx-auto">We deliver exceptional results with cutting-edge technology and creative design.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 stagger-animation">
+                <div class="text-center scale-in hover-lift-strong magnetic">
+                    <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 hover-bounce">
+                        <i class="fas fa-rocket text-2xl"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl mb-2">Fast Delivery</h3>
+                    <p class="text-gray-600">Quick turnaround without compromising quality</p>
+                </div>
+                <div class="text-center scale-in hover-lift-strong magnetic">
+                    <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 hover-bounce">
+                        <i class="fas fa-mobile-alt text-2xl"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl mb-2">Mobile Responsive</h3>
+                    <p class="text-gray-600">Perfect on all devices and screen sizes</p>
+                </div>
+                <div class="text-center scale-in hover-lift-strong magnetic">
+                    <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 hover-bounce">
+                        <i class="fas fa-search text-2xl"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl mb-2">SEO Friendly</h3>
+                    <p class="text-gray-600">Optimized for search engines and visibility</p>
+                </div>
+                <div class="text-center scale-in hover-lift-strong magnetic">
+                    <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 hover-bounce">
+                        <i class="fas fa-dollar-sign text-2xl"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl mb-2">Affordable Pricing</h3>
+                    <p class="text-gray-600">Competitive rates for premium quality</p>
+                </div>
+                <div class="text-center scale-in hover-lift-strong magnetic">
+                    <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 hover-bounce">
+                        <i class="fas fa-magic text-2xl"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl mb-2">Modern Animations</h3>
+                    <p class="text-gray-600">Engaging interactions and smooth transitions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-poppins font-bold text-4xl md:text-5xl mb-6 text-neutral-dark">Our Services</h2>
+                <p class="font-inter text-xl text-gray-600 max-w-3xl mx-auto">Comprehensive web solutions tailored to your business needs.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white border border-gray-200 rounded-xl p-8 slide-in-left hover-lift-strong hover-glow">
+                    <div class="bg-primary text-white w-12 h-12 rounded-lg flex items-center justify-center mb-6 hover-rotate">
+                        <i class="fas fa-briefcase text-xl"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-2xl mb-4">Business Websites</h3>
+                    <p class="text-gray-600 mb-6">Professional websites that represent your brand and drive conversions.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• Custom design & development</li>
+                        <li>• Content management system</li>
+                        <li>• Contact forms & analytics</li>
+                    </ul>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-xl p-8 scale-in hover-lift-strong hover-glow">
+                    <div class="bg-primary text-white w-12 h-12 rounded-lg flex items-center justify-center mb-6 hover-rotate">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-2xl mb-4">E-commerce Stores</h3>
+                    <p class="text-gray-600 mb-6">Complete online stores with secure payment processing and inventory management.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• Product catalog & cart</li>
+                        <li>• Payment gateway integration</li>
+                        <li>• Order management system</li>
+                    </ul>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-xl p-8 slide-in-right hover-lift-strong hover-glow">
+                    <div class="bg-primary text-white w-12 h-12 rounded-lg flex items-center justify-center mb-6 hover-rotate">
+                        <i class="fas fa-palette text-xl"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-2xl mb-4">Portfolio Sites</h3>
+                    <p class="text-gray-600 mb-6">Showcase your work with stunning portfolio websites that impress clients.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• Gallery & project showcase</li>
+                        <li>• Client testimonials</li>
+                        <li>• Contact & booking forms</li>
+                    </ul>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-xl p-8 slide-in-left hover-lift-strong hover-glow">
+                    <div class="bg-primary text-white w-12 h-12 rounded-lg flex items-center justify-center mb-6 hover-rotate">
+                        <i class="fas fa-bullseye text-xl"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-2xl mb-4">Landing Pages</h3>
+                    <p class="text-gray-600 mb-6">High-converting landing pages designed to maximize your campaign results.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• A/B testing ready</li>
+                        <li>• Lead capture forms</li>
+                        <li>• Conversion optimization</li>
+                    </ul>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-xl p-8 scale-in hover-lift-strong hover-glow">
+                    <div class="bg-primary text-white w-12 h-12 rounded-lg flex items-center justify-center mb-6 hover-rotate">
+                        <i class="fas fa-redo text-xl"></i>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-2xl mb-4">Website Redesign</h3>
+                    <p class="text-gray-600 mb-6">Transform your existing website with modern design and improved functionality.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• UI/UX improvements</li>
+                        <li>• Performance optimization</li>
+                        <li>• Mobile responsiveness</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-neutral-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-poppins font-bold text-4xl md:text-5xl mb-6 text-neutral-dark">Pricing Plans</h2>
+                <p class="font-inter text-xl text-gray-600 max-w-3xl mx-auto">Choose the perfect plan for your business needs.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Starter Plan -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover-lift flex flex-col h-full">
+                    <div class="text-center mb-8">
+                        <h3 class="font-poppins font-bold text-2xl mb-2">Starter</h3>
+                        <div class="text-4xl font-bold text-primary mb-2">₹9,999+</div>
+                        <p class="text-gray-600">Perfect for small businesses</p>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Up to 5 pages</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Mobile responsive design</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Contact form</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Basic SEO setup</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>1 month support</span>
+                        </li>
+                    </ul>
+                    <button class="get-started-btn w-full bg-primary text-white py-3 rounded-lg font-poppins font-semibold hover:bg-secondary transition-colors mt-auto" data-plan="Starter" data-price="₹9,999+">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Business Plan (Highlighted) -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover-lift relative border-2 border-primary flex flex-col h-full">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-accent text-neutral-dark px-4 py-2 rounded-full font-poppins font-semibold">Most Popular</span>
+                    </div>
+                    <div class="text-center mb-8">
+                        <h3 class="font-poppins font-bold text-2xl mb-2">Business</h3>
+                        <div class="text-4xl font-bold text-primary mb-2">₹12,999+</div>
+                        <p class="text-gray-600">Ideal for growing businesses</p>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Up to 10 pages</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Custom design & animations</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Advanced contact forms</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>SEO optimization</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Analytics integration</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>3 months support</span>
+                        </li>
+                    </ul>
+                    <button class="get-started-btn w-full bg-primary text-white py-3 rounded-lg font-poppins font-semibold hover:bg-secondary transition-colors mt-auto" data-plan="Business" data-price="₹12,999+">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover-lift flex flex-col h-full">
+                    <div class="text-center mb-8">
+                        <h3 class="font-poppins font-bold text-2xl mb-2">Premium</h3>
+                        <div class="text-4xl font-bold text-primary mb-2">₹19,999+</div>
+                        <p class="text-gray-600">For established businesses</p>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Unlimited pages</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>E-commerce functionality</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Custom integrations</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Advanced SEO & marketing</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>Performance optimization</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            <span>6 months support</span>
+                        </li>
+                    </ul>
+                    <button class="get-started-btn w-full bg-primary text-white py-3 rounded-lg font-poppins font-semibold hover:bg-secondary transition-colors mt-auto" data-plan="Premium" data-price="₹19,999+">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-poppins font-bold text-4xl md:text-5xl mb-6 text-neutral-dark">Our Portfolio</h2>
+                <p class="font-inter text-xl text-gray-600 max-w-3xl mx-auto">See how we've helped businesses grow with stunning websites.</p>
+            </div>
+            
+            <!-- Portfolio Slider -->
+            <div class="portfolio-slider relative">
+                <div class="portfolio-container overflow-hidden rounded-2xl">
+                    <div class="portfolio-track flex transition-transform duration-500 ease-in-out">
+                        <!-- Project 1 -->
+                        <div class="portfolio-slide w-full flex-shrink-0">
+                            <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-2xl">
+                                <div class="h-96 relative overflow-hidden">
+                                    <img src="Screenshot 2025-09-03 at 02.33.15.png" alt="TechStart Solutions Project" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-black/20"></div>   
+                                </div>
+                                <div class="p-8">
+                                    <h3 class="font-poppins font-bold text-3xl text-neutral-dark mb-4">TechStart Solutions</h3>
+                                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">Modern business website with custom animations and lead generation forms. Built with cutting-edge technology to deliver exceptional user experience and drive business growth.</p>
+                                    <div class="flex flex-col sm:flex-row gap-4">
+                                        <button class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-secondary transition-all duration-300 font-semibold transform hover:scale-105">
+                                            View Live
+                                        </button>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="portfolio-slide w-full flex-shrink-0">
+                            <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-2xl">
+                                <div class="h-96 relative overflow-hidden">
+                                    <img src="Screenshot 2025-09-03 at 02.33.44.png" alt="Fashion Store Project" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-black/20"></div>
+                                    
+                                </div>
+                                <div class="p-8">
+                                    <h3 class="font-poppins font-bold text-3xl text-neutral-dark mb-4">Fashion Store</h3>
+                                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">Advanced e-commerce platform with intelligent filtering, secure payment processing, and seamless user experience. Designed to maximize conversions and customer satisfaction.</p>
+                                    <div class="flex flex-col sm:flex-row gap-4">
+                                        <button class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-secondary transition-all duration-300 font-semibold transform hover:scale-105">
+                                            View Live
+                                        </button>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="portfolio-slide w-full flex-shrink-0">
+                            <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-2xl">
+                                <div class="h-96 bg-gradient-to-br from-primary to-accent flex items-center justify-center relative overflow-hidden">
+                                    <i class="fas fa-camera text-white text-6xl"></i>
+                                    <div class="absolute inset-0 bg-black/20"></div>
+                                </div>
+                                <div class="p-8">
+                                    <h3 class="font-poppins font-bold text-3xl text-neutral-dark mb-4">Photography Studio</h3>
+                                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">Professional photography portfolio with stunning gallery, booking system integration, and client management tools. Showcasing artistic work with modern web technologies.</p>
+                                    <div class="flex flex-col sm:flex-row gap-4">
+                                        <button class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-secondary transition-all duration-300 font-semibold transform hover:scale-105">
+                                            View Live
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Controls -->
+                <div class="flex justify-center items-center mt-8 space-x-4">
+                    <button class="portfolio-prev bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-md border border-white/20">
+                        <i class="fas fa-chevron-left text-xl"></i>
+                    </button>
+                    
+                    <div class="portfolio-dots flex space-x-3">
+                        <button class="portfolio-dot active w-4 h-4 rounded-full bg-primary hover:bg-secondary transition-all duration-300"></button>
+                        <button class="portfolio-dot w-4 h-4 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300"></button>
+                        <button class="portfolio-dot w-4 h-4 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300"></button>
+                    </div>
+                    
+                    <button class="portfolio-next bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-md border border-white/20">
+                        <i class="fas fa-chevron-right text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-accent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-poppins font-bold text-4xl md:text-5xl mb-6 text-neutral-dark">What Our Clients Say</h2>
+                <p class="font-inter text-xl text-gray-700 max-w-3xl mx-auto">Don't just take our word for it - hear from our satisfied clients.</p>
+            </div>
+            <div class="testimonials-carousel relative">
+                <div class="testimonials-container overflow-hidden">
+                    <div class="testimonials-track flex transition-transform duration-500 ease-in-out">
+                        <!-- Testimonial 1 -->
+                        <div class="testimonial-slide w-full md:w-1/3 flex-shrink-0 px-4">
+                            <div class="bg-white rounded-xl p-8 shadow-lg hover-lift h-full">
+                                <div class="flex items-center mb-4">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 mb-6 italic">"FrameX transformed our online presence completely. Our website now converts visitors into customers like never before. Highly recommended!"</p>
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">
+                                        SM
+                                    </div>
+                                    <div>
+                                        <h4 class="font-poppins font-semibold text-neutral-dark">Sarah Mitchell</h4>
+                                        <p class="text-gray-500 text-sm">CEO, TechStart Solutions</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 2 -->
+                        <div class="testimonial-slide w-full md:w-1/3 flex-shrink-0 px-4">
+                            <div class="bg-white rounded-xl p-8 shadow-lg hover-lift h-full">
+                                <div class="flex items-center mb-4">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 mb-6 italic">"The team at FrameX delivered exactly what we needed - a modern, fast, and beautiful website. Our sales have increased by 40% since launch."</p>
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">
+                                        DJ
+                                    </div>
+                                    <div>
+                                        <h4 class="font-poppins font-semibold text-neutral-dark">David Johnson</h4>
+                                        <p class="text-gray-500 text-sm">Founder, Fashion Store</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 3 -->
+                        <div class="testimonial-slide w-full md:w-1/3 flex-shrink-0 px-4">
+                            <div class="bg-white rounded-xl p-8 shadow-lg hover-lift h-full">
+                                <div class="flex items-center mb-4">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 mb-6 italic">"Professional, responsive, and exceeded our expectations. FrameX made the entire process smooth and stress-free. Will definitely work with them again!"</p>
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">
+                                        AL
+                                    </div>
+                                    <div>
+                                        <h4 class="font-poppins font-semibold text-neutral-dark">Anna Lee</h4>
+                                        <p class="text-gray-500 text-sm">Owner, Photography Studio</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Carousel Controls -->
+                <div class="flex justify-center mt-8 space-x-4">
+                    <button class="carousel-btn prev-btn bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-dots flex space-x-2">
+                        <button class="dot active w-3 h-3 rounded-full bg-white/50 hover:bg-white/70 transition-all duration-300"></button>
+                        <button class="dot w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition-all duration-300"></button>
+                        <button class="dot w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition-all duration-300"></button>
+                    </div>
+                    <button class="carousel-btn next-btn bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner Section -->
+    <section class="py-20 bg-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-poppins font-bold text-4xl md:text-5xl mb-6 text-white">
+                Ready to grow your business online?
+            </h2>
+            <p class="font-inter text-xl mb-8 text-white opacity-90 max-w-3xl mx-auto">
+                Let's build something great together. Get in touch and let's discuss your project.
+            </p>
+            <a href="https://wa.me/1234567890" target="_blank" class="bg-white text-primary px-8 py-4 rounded-lg font-poppins font-semibold hover:bg-neutral-light transition-colors inline-flex items-center">
+                <i class="fab fa-whatsapp mr-2"></i>Start Your Project
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="font-poppins font-bold text-4xl md:text-5xl mb-6 text-neutral-dark">About FrameX</h2>
+                    <p class="font-inter text-xl text-gray-600 mb-6">
+                        I'm Naman, founder of FrameX. I design modern websites that combine performance with design to help businesses thrive in the digital world.
+                    </p>
+                    <p class="font-inter text-lg text-gray-600 mb-8">
+                        With years of experience in web development and design, I specialize in creating websites that not only look great but also deliver real business results. Every project is approached with attention to detail and a focus on user experience.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/framex" target="_blank" class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-secondary transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/framex" target="_blank" class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-secondary transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div class="w-80 h-80 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-white text-6xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-dark text-neutral-light py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="font-poppins font-bold text-3xl text-white mb-4">FrameX</div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Creating modern, responsive websites that help businesses grow and succeed in the digital world.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/framex" target="_blank" class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-secondary transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/framex" target="_blank" class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-secondary transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-poppins font-semibold text-xl text-white mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#pricing" class="text-gray-300 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="#portfolio" class="text-gray-300 hover:text-white transition-colors">Portfolio</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-poppins font-semibold text-xl text-white mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>hello@framex.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 FrameX. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/1234567890" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors z-50">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Pricing Popup Form Modal -->
+    <div id="pricingModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto transform scale-95 opacity-0 transition-all duration-300 ease-out">
+            <div class="p-6">
+                <!-- Modal Header -->
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-poppins font-bold text-2xl text-neutral-dark">Get Started</h3>
+                    <button id="closePricingModal" class="text-gray-400 hover:text-gray-600 transition-colors">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Selected Plan Display -->
+                <div id="selectedPlan" class="bg-primary/10 border border-primary/20 rounded-lg p-4 mb-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 id="planName" class="font-poppins font-semibold text-lg text-primary">Starter Plan</h4>
+                            <p id="planPrice" class="text-gray-600">₹9,999+</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-sm text-gray-500">Selected Plan</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Form -->
+                <form id="pricingForm" class="space-y-4">
+                    <div>
+                        <label for="pricingName" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                        <input type="text" id="pricingName" name="name" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+                    </div>
+                    
+                    <div>
+                        <label for="pricingEmail" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                        <input type="email" id="pricingEmail" name="email" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+                    </div>
+                    
+                    <div>
+                        <label for="pricingPhone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                        <input type="tel" id="pricingPhone" name="phone" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+                    </div>
+                    
+                    <div>
+                        <label for="pricingCompany" class="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
+                        <input type="text" id="pricingCompany" name="company" 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+                    </div>
+                    
+                    <div>
+                        <label for="pricingMessage" class="block text-sm font-medium text-gray-700 mb-2">Project Details</label>
+                        <textarea id="pricingMessage" name="message" rows="3" 
+                                  placeholder="Tell us about your project requirements..."
+                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"></textarea>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <input type="checkbox" id="pricingAgreement" name="agreement" required 
+                               class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                        <label for="pricingAgreement" class="ml-2 text-sm text-gray-600">
+                            I agree to the <a href="#" class="text-primary hover:underline">Terms of Service</a> and <a href="#" class="text-primary hover:underline">Privacy Policy</a>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full bg-primary text-white py-3 px-6 rounded-lg font-semibold hover:bg-secondary transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                        <span class="submit-text">Send Request</span>
+                        <span class="loading-text hidden">
+                            <i class="fas fa-spinner fa-spin mr-2"></i>Sending...
+                        </span>
+                    </button>
+                </form>
+                
+                <!-- Success Message -->
+                <div id="pricingSuccess" class="hidden text-center py-6">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-check text-green-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-poppins font-semibold text-lg text-gray-800 mb-2">Request Sent Successfully!</h4>
+                    <p class="text-gray-600 mb-4">We'll get back to you within 24 hours with a detailed proposal.</p>
+                    <button id="closePricingSuccess" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-colors">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form Modal -->
+    <div id="contactModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-poppins font-bold text-2xl text-neutral-dark">Request a Quote</h3>
+                    <button onclick="closeContactForm()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                        <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Business Type</label>
+                        <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option>Small Business</option>
+                            <option>E-commerce</option>
+                            <option>Portfolio/Personal</option>
+                            <option>Corporate</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                        <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-poppins font-semibold hover:bg-secondary transition-colors">
+                        Send Request
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
