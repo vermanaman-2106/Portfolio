@@ -229,33 +229,248 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-// Submit form (placeholder for actual implementation)
+// Enhanced form submission with Formspree integration
 function submitForm(form) {
     const submitButton = form.querySelector('button[type="submit"]');
-    const originalText = submitButton.textContent;
+    const originalText = submitButton.innerHTML;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    
+    // Validate all fields before submission
+    if (!validateEntireForm(form)) {
+        showNotification('Please fix the errors before submitting.', 'error');
+        return;
+    }
     
     // Show loading state
-    submitButton.textContent = 'Sending...';
-    submitButton.disabled = true;
+    showFormLoadingState(submitButton);
     form.classList.add('loading');
     
-    // Simulate form submission
+    // Disable all form inputs
+    const inputs = form.querySelectorAll('input, textarea, select, button');
+    inputs.forEach(input => input.disabled = true);
+    
+    // Submit to Formspree
+    submitToFormspree(form, submitButton, originalText, data);
+}
+
+// Validate entire form
+function validateEntireForm(form) {
+    const requiredFields = form.querySelectorAll('[required]');
+    let isValid = true;
+    
+    requiredFields.forEach(field => {
+        if (!validateFieldWithFeedback(field)) {
+            isValid = false;
+        }
+    });
+    
+    return isValid;
+}
+
+// Show enhanced loading state
+function showFormLoadingState(submitButton) {
+    submitButton.innerHTML = `
+        <div class="flex items-center justify-center">
+            <div class="loading-spinner mr-3"></div>
+            <span>Sending your request...</span>
+        </div>
+    `;
+    submitButton.disabled = true;
+}
+
+// Submit form to Formspree
+function submitToFormspree(form, submitButton, originalText, data) {
+    const formData = new FormData(form);
+    
+    // Add additional metadata
+    formData.append('_subject', 'New Contact Form Submission from FrameX Website');
+    formData.append('_replyto', data.email || '');
+    formData.append('_cc', '');
+    formData.append('_next', window.location.href + '?submitted=true');
+    
+    // Get Formspree endpoint from form action or data attribute
+    const formspreeEndpoint = form.action || form.dataset.formspreeEndpoint;
+    
+    if (!formspreeEndpoint) {
+        console.error('Formspree endpoint not found. Please add action attribute or data-formspree-endpoint to your form.');
+        handleFormError(form, submitButton, originalText, 'Form configuration error');
+        return;
+    }
+    
+    // Update button text
+    submitButton.innerHTML = `
+        <div class="flex items-center justify-center">
+            <div class="loading-spinner mr-3"></div>
+            <span>Sending to Formspree...</span>
+        </div>
+    `;
+    
+    // Submit to Formspree
+    fetch(formspreeEndpoint, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Network response was not ok');
+        }
+    })
+    .then(data => {
+        // Success
+        handleFormSuccess(form, submitButton, originalText, data);
+    })
+    .catch(error => {
+        // Error
+        console.error('Formspree submission error:', error);
+        handleFormError(form, submitButton, originalText, error.message);
+    });
+}
+
+// Handle successful Formspree submission
+function handleFormSuccess(form, submitButton, originalText, formspreeData) {
+    // Show success state
+    submitButton.innerHTML = `
+        <div class="flex items-center justify-center text-green-600">
+            <i class="fas fa-check-circle mr-2"></i>
+            <span>Message sent successfully!</span>
+        </div>
+    `;
+    
+    // Add success animation
+    submitButton.classList.add('success-bounce');
+    
+    // Show success notification
+    showNotification('Thank you for your message! We\'ll get back to you within 24 hours.', 'success');
+    
+    // Reset form after delay
     setTimeout(() => {
-        // Reset form state
-        submitButton.textContent = originalText;
-        submitButton.disabled = false;
-        form.classList.remove('loading');
+        resetFormState(form, submitButton, originalText);
         
-        // Show success message
-        showNotification('Thank you for your request! We\'ll get back to you soon.', 'success');
+        // Close modal if it's a modal form
+        if (form.closest('#contactModal')) {
+            closeContactForm();
+        }
         
-        // Close modal
-        closeContactForm();
+        // Log successful submission
+        console.log('Form submitted successfully to Formspree:', {
+            formspreeResponse: formspreeData,
+            timestamp: new Date().toISOString(),
+            formId: form.id || 'unknown'
+        });
         
-        // Here you would typically send the form data to your backend
-        console.log('Form submitted:', new FormData(form));
+        // Track form submission
+        trackFormSubmission(form, formspreeData);
+        
     }, 2000);
 }
+
+// Handle Formspree submission error
+function handleFormError(form, submitButton, originalText, errorMessage) {
+    // Show error state
+    submitButton.innerHTML = `
+        <div class="flex items-center justify-center text-red-600">
+            <i class="fas fa-exclamation-circle mr-2"></i>
+            <span>Failed to send message</span>
+        </div>
+    `;
+    
+    // Add error animation
+    submitButton.classList.add('error-shake');
+    
+    // Show error notification
+    showNotification('Sorry, there was an error sending your message. Please try again or contact us directly.', 'error');
+    
+    // Reset form after delay
+    setTimeout(() => {
+        resetFormState(form, submitButton, originalText);
+        
+        // Log error
+        console.error('Formspree submission failed:', {
+            error: errorMessage,
+            timestamp: new Date().toISOString(),
+            formId: form.id || 'unknown'
+        });
+        
+    }, 3000);
+}
+
+// Reset form state
+function resetFormState(form, submitButton, originalText) {
+    // Reset button
+    submitButton.innerHTML = originalText;
+    submitButton.disabled = false;
+    submitButton.classList.remove('success-bounce');
+    
+    // Reset form
+    form.reset();
+    form.classList.remove('loading');
+    
+    // Re-enable inputs
+    const inputs = form.querySelectorAll('input, textarea, select, button');
+    inputs.forEach(input => input.disabled = false);
+    
+    // Clear all validation states
+    const fields = form.querySelectorAll('input, textarea, select');
+    fields.forEach(field => {
+        field.classList.remove('error', 'success');
+        clearFieldError(field);
+    });
+    
+    // Clear success messages
+    const successMessages = form.querySelectorAll('.success-message');
+    successMessages.forEach(msg => msg.remove());
+}
+
+// Track form submission for analytics
+function trackFormSubmission(form, data) {
+    // Google Analytics tracking
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'form_submit', {
+            'event_category': 'contact',
+            'event_label': form.id || 'contact_form',
+            'value': 1
+        });
+    }
+    
+    // Facebook Pixel tracking
+    if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead', {
+            content_name: 'Contact Form Submission',
+            content_category: 'Web Development Inquiry'
+        });
+    }
+    
+    // Formspree analytics (if available)
+    if (typeof formspree !== 'undefined') {
+        formspree.track('form_submit', {
+            form_id: form.id,
+            timestamp: new Date().toISOString()
+        });
+    }
+}
+
+// Check for Formspree success parameter in URL
+function checkFormspreeSuccess() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('submitted') === 'true') {
+        showNotification('Thank you for your message! We\'ll get back to you within 24 hours.', 'success');
+        
+        // Clean up URL
+        const newUrl = window.location.pathname;
+        window.history.replaceState({}, document.title, newUrl);
+    }
+}
+
+// Initialize Formspree success check
+document.addEventListener('DOMContentLoaded', function() {
+    checkFormspreeSuccess();
+});
 
 // Show notification
 function showNotification(message, type = 'info') {
@@ -435,29 +650,164 @@ function setupPricingModal() {
     });
 }
 
-// Form validation setup
+// Enhanced Form validation setup
 function setupFormValidation() {
     const inputs = document.querySelectorAll('input, textarea, select');
     
     inputs.forEach(input => {
-        // Real-time validation
+        // Real-time validation with enhanced feedback
         input.addEventListener('blur', function() {
-            if (this.hasAttribute('required') && !this.value.trim()) {
-                this.classList.add('error');
-            } else {
-                this.classList.remove('error');
+            validateFieldWithFeedback(this);
+        });
+        
+        // Clear error on input with smooth transition
+        input.addEventListener('input', function() {
+            clearFieldErrorSmooth(this);
+            // Add success state for valid fields
+            if (this.value.trim() && isValidField(this)) {
+                this.classList.add('success');
             }
         });
         
-        // Clear error on input
-        input.addEventListener('input', function() {
-            this.classList.remove('error');
-            const errorMessage = this.parentElement.querySelector('.error-message');
-            if (errorMessage) {
-                errorMessage.remove();
-            }
+        // Add focus effects
+        input.addEventListener('focus', function() {
+            this.parentElement.classList.add('focused');
+        });
+        
+        input.addEventListener('blur', function() {
+            this.parentElement.classList.remove('focused');
         });
     });
+}
+
+// Enhanced field validation with detailed feedback
+function validateFieldWithFeedback(field) {
+    const value = field.value.trim();
+    const fieldType = field.type;
+    const isRequired = field.hasAttribute('required');
+    
+    // Clear previous states
+    field.classList.remove('error', 'success');
+    clearFieldError(field);
+    
+    // Required field validation
+    if (isRequired && !value) {
+        showFieldError(field, 'This field is required');
+        return false;
+    }
+    
+    // Skip validation if field is empty and not required
+    if (!value && !isRequired) {
+        return true;
+    }
+    
+    // Email validation
+    if (fieldType === 'email' && !isValidEmail(value)) {
+        showFieldError(field, 'Please enter a valid email address');
+        return false;
+    }
+    
+    // Phone validation
+    if (fieldType === 'tel' && !isValidPhone(value)) {
+        showFieldError(field, 'Please enter a valid phone number');
+        return false;
+    }
+    
+    // Name validation
+    if (field.name === 'name' || field.name === 'firstName' || field.name === 'lastName') {
+        if (value.length < 2) {
+            showFieldError(field, 'Name must be at least 2 characters long');
+            return false;
+        }
+        if (!/^[a-zA-Z\s]+$/.test(value)) {
+            showFieldError(field, 'Name can only contain letters and spaces');
+            return false;
+        }
+    }
+    
+    // Company name validation
+    if (field.name === 'company' && value.length > 0 && value.length < 2) {
+        showFieldError(field, 'Company name must be at least 2 characters long');
+        return false;
+    }
+    
+    // Message validation
+    if (field.tagName === 'TEXTAREA' && isRequired && value.length < 10) {
+        showFieldError(field, 'Message must be at least 10 characters long');
+        return false;
+    }
+    
+    // Success state
+    field.classList.add('success');
+    showFieldSuccess(field, 'Looks good!');
+    return true;
+}
+
+// Check if field is valid
+function isValidField(field) {
+    const value = field.value.trim();
+    const fieldType = field.type;
+    
+    if (field.hasAttribute('required') && !value) return false;
+    if (!value) return true;
+    
+    if (fieldType === 'email') return isValidEmail(value);
+    if (fieldType === 'tel') return isValidPhone(value);
+    
+    return true;
+}
+
+// Clear field error with smooth animation
+function clearFieldErrorSmooth(field) {
+    field.classList.remove('error');
+    const errorMessage = field.parentElement.querySelector('.error-message');
+    if (errorMessage) {
+        errorMessage.style.opacity = '0';
+        errorMessage.style.transform = 'translateY(-10px)';
+        setTimeout(() => {
+            if (errorMessage.parentElement) {
+                errorMessage.remove();
+            }
+        }, 300);
+    }
+}
+
+// Show field success message
+function showFieldSuccess(field, message) {
+    // Remove existing success message
+    const existingSuccess = field.parentElement.querySelector('.success-message');
+    if (existingSuccess) {
+        existingSuccess.remove();
+    }
+    
+    // Add success message
+    const successDiv = document.createElement('div');
+    successDiv.className = 'success-message text-green-600 text-sm mt-1 flex items-center';
+    successDiv.innerHTML = `<i class="fas fa-check-circle mr-1"></i>${message}`;
+    successDiv.style.opacity = '0';
+    successDiv.style.transform = 'translateY(-10px)';
+    
+    field.parentElement.appendChild(successDiv);
+    
+    // Animate in
+    setTimeout(() => {
+        successDiv.style.transition = 'all 0.3s ease';
+        successDiv.style.opacity = '1';
+        successDiv.style.transform = 'translateY(0)';
+    }, 10);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+        if (successDiv.parentElement) {
+            successDiv.style.opacity = '0';
+            successDiv.style.transform = 'translateY(-10px)';
+            setTimeout(() => {
+                if (successDiv.parentElement) {
+                    successDiv.remove();
+                }
+            }, 300);
+        }
+    }, 3000);
 }
 
 // Lazy loading for images (if any are added later)
@@ -922,6 +1272,7 @@ function initializeEnhancedAnimations() {
     setupEnhancedButtons();
     setupTestimonialsCarousel();
     setupPortfolioSlider();
+    setupFormEnhancements();
     
     // Add loading states to forms
     const forms = document.querySelectorAll('form');
@@ -932,6 +1283,148 @@ function initializeEnhancedAnimations() {
                 showLoadingState(submitBtn);
             }
         });
+    });
+}
+
+// Setup form enhancements
+function setupFormEnhancements() {
+    setupPhoneFormatting();
+    setupAutoSave();
+    setupCharacterCounters();
+    setupFormProgress();
+}
+
+// Phone number formatting
+function setupPhoneFormatting() {
+    const phoneInputs = document.querySelectorAll('input[type="tel"]');
+    
+    phoneInputs.forEach(input => {
+        input.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length >= 6) {
+                value = value.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+            } else if (value.length >= 3) {
+                value = value.replace(/(\d{3})(\d{0,3})/, '($1) $2');
+            }
+            
+            e.target.value = value;
+        });
+        
+        // Add country code placeholder
+        if (!input.placeholder) {
+            input.placeholder = '+1 (555) 123-4567';
+        }
+    });
+}
+
+// Auto-save form data
+function setupAutoSave() {
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        const formId = form.id || 'form_' + Math.random().toString(36).substr(2, 9);
+        const inputs = form.querySelectorAll('input, textarea, select');
+        
+        // Load saved data
+        inputs.forEach(input => {
+            const savedValue = localStorage.getItem(`${formId}_${input.name}`);
+            if (savedValue && input.type !== 'password') {
+                input.value = savedValue;
+            }
+        });
+        
+        // Save data on input
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                localStorage.setItem(`${formId}_${this.name}`, this.value);
+            });
+        });
+        
+        // Clear saved data on successful submission
+        form.addEventListener('submit', function() {
+            setTimeout(() => {
+                inputs.forEach(input => {
+                    localStorage.removeItem(`${formId}_${input.name}`);
+                });
+            }, 2000);
+        });
+    });
+}
+
+// Character counters for textareas
+function setupCharacterCounters() {
+    const textareas = document.querySelectorAll('textarea');
+    
+    textareas.forEach(textarea => {
+        const maxLength = textarea.getAttribute('maxlength') || 500;
+        const counter = document.createElement('div');
+        counter.className = 'character-counter text-sm text-gray-500 mt-1 text-right';
+        counter.textContent = `0/${maxLength} characters`;
+        
+        textarea.parentElement.appendChild(counter);
+        
+        textarea.addEventListener('input', function() {
+            const remaining = maxLength - this.value.length;
+            counter.textContent = `${this.value.length}/${maxLength} characters`;
+            
+            if (remaining < 50) {
+                counter.classList.add('text-red-500');
+                counter.classList.remove('text-gray-500');
+            } else if (remaining < 100) {
+                counter.classList.add('text-yellow-500');
+                counter.classList.remove('text-gray-500', 'text-red-500');
+            } else {
+                counter.classList.add('text-gray-500');
+                counter.classList.remove('text-yellow-500', 'text-red-500');
+            }
+        });
+    });
+}
+
+// Form progress indicator
+function setupFormProgress() {
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        const requiredFields = form.querySelectorAll('[required]');
+        if (requiredFields.length === 0) return;
+        
+        // Create progress bar
+        const progressContainer = document.createElement('div');
+        progressContainer.className = 'form-progress mb-4';
+        progressContainer.innerHTML = '<div class="form-progress-bar" style="width: 0%"></div>';
+        
+        form.insertBefore(progressContainer, form.firstChild);
+        
+        const progressBar = progressContainer.querySelector('.form-progress-bar');
+        
+        // Update progress
+        function updateProgress() {
+            let completedFields = 0;
+            requiredFields.forEach(field => {
+                if (field.value.trim() && isValidField(field)) {
+                    completedFields++;
+                }
+            });
+            
+            const progress = (completedFields / requiredFields.length) * 100;
+            progressBar.style.width = progress + '%';
+            
+            // Add completion message
+            if (progress === 100) {
+                progressContainer.innerHTML = '<div class="form-progress-bar" style="width: 100%"></div><div class="text-sm text-green-600 mt-1 text-center">✓ All required fields completed!</div>';
+            }
+        }
+        
+        // Update progress on input
+        requiredFields.forEach(field => {
+            field.addEventListener('input', updateProgress);
+            field.addEventListener('blur', updateProgress);
+        });
+        
+        // Initial progress update
+        updateProgress();
     });
 }
 

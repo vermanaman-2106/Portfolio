@@ -106,8 +106,8 @@
                     
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4 fade-in">
-                        <a href="https://wa.me/1234567890" target="_blank" class="bg-accent text-neutral-dark px-8 py-4 rounded-lg font-poppins font-semibold hover:bg-accent/90 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                            <i class="fab fa-whatsapp mr-2"></i>Chat on WhatsApp
+                        <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-btn bg-accent text-neutral-dark px-8 py-4 rounded-lg font-poppins font-semibold hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl hover:shadow-green-500/25 relative overflow-hidden group">
+                            <i class="fab fa-whatsapp mr-2 transition-transform duration-300 group-hover:scale-110"></i>Chat on WhatsApp
                         </a>
                         <button onclick="openContactForm()" class="border-2 border-white text-white px-8 py-4 rounded-lg font-poppins font-semibold hover:bg-white hover:text-neutral-dark transition-all duration-300 transform hover:scale-105">
                             <i class="fas fa-paper-plane mr-2"></i>Request a Quote
@@ -427,11 +427,11 @@
                                     <div class="absolute inset-0 bg-black/20"></div>   
                                 </div>
                                 <div class="p-8">
-                                    <h3 class="font-poppins font-bold text-3xl text-neutral-dark mb-4">TechStart Solutions</h3>
+                                    <h3 class="font-poppins font-bold text-3xl text-neutral-dark mb-4">FitLife Gym</h3>
                                     <p class="text-gray-600 text-lg mb-6 leading-relaxed">Modern business website with custom animations and lead generation forms. Built with cutting-edge technology to deliver exceptional user experience and drive business growth.</p>
                                     <div class="flex flex-col sm:flex-row gap-4">
                                         <button class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-secondary transition-all duration-300 font-semibold transform hover:scale-105">
-                                            View Live
+                                            <a>View Live</a>
                                         </button>
                                         
                                     </div>
@@ -452,9 +452,9 @@
                                     <p class="text-gray-600 text-lg mb-6 leading-relaxed">Advanced e-commerce platform with intelligent filtering, secure payment processing, and seamless user experience. Designed to maximize conversions and customer satisfaction.</p>
                                     <div class="flex flex-col sm:flex-row gap-4">
                                         <button class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-secondary transition-all duration-300 font-semibold transform hover:scale-105">
-                                            View Live
+                                            <a>View Live</a>
                                         </button>
-                                        
+                            
                                     </div>
                                 </div>
                             </div>
@@ -472,7 +472,7 @@
                                     <p class="text-gray-600 text-lg mb-6 leading-relaxed">Professional photography portfolio with stunning gallery, booking system integration, and client management tools. Showcasing artistic work with modern web technologies.</p>
                                     <div class="flex flex-col sm:flex-row gap-4">
                                         <button class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-secondary transition-all duration-300 font-semibold transform hover:scale-105">
-                                            View Live
+                                            <a>View Live</a>
                                         </button>
                                     </div>
                                 </div>
@@ -730,7 +730,7 @@
                 </div>
                 
                 <!-- Form -->
-                <form id="pricingForm" class="space-y-4">
+                <form id="pricingForm" class="space-y-4" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                     <div>
                         <label for="pricingName" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
                         <input type="text" id="pricingName" name="name" required 
@@ -804,7 +804,7 @@
                         <i class="fas fa-times text-xl"></i>
                     </button>
                 </div>
-                <form class="space-y-4">
+                <form class="space-y-4" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
                         <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
