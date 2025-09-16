@@ -19,13 +19,33 @@ function setupContactForm() {
     
     if (!form) return;
 
-    // Form submission
+    // Form submission - let Formspree handle it naturally
     form.addEventListener('submit', function(e) {
-        e.preventDefault();
+        // Don't prevent default - let Formspree handle the submission
+        // Just add our enhanced UI feedback
         
-        if (validateContactForm(form)) {
-            submitContactForm(form);
+        if (!validateContactForm(form)) {
+            e.preventDefault();
+            showNotification('Please fix the errors before submitting.', 'error');
+            return;
         }
+        
+        // Show loading state
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
+        
+        submitButton.innerHTML = `
+            <div class="flex items-center justify-center">
+                <div class="loading-spinner mr-3"></div>
+                <span>Sending your request...</span>
+            </div>
+        `;
+        submitButton.disabled = true;
+        
+        // Track the submission
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        trackFormSubmission(form, data);
     });
 
     // Real-time validation
@@ -353,6 +373,34 @@ document.addEventListener('DOMContentLoaded', function() {
     setupCharacterCounters();
 });
 
+// Track form submission for analytics
+function trackFormSubmission(form, data) {
+    // Google Analytics tracking
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'form_submit', {
+            'event_category': 'contact',
+            'event_label': form.id || 'contact_form',
+            'value': 1
+        });
+    }
+    
+    // Facebook Pixel tracking
+    if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead', {
+            content_name: 'Contact Form Submission',
+            content_category: 'Web Development Inquiry'
+        });
+    }
+    
+    // Log form data
+    console.log('Contact form submitted:', {
+        ...data,
+        timestamp: new Date().toISOString(),
+        formId: form.id || 'contact_form'
+    });
+}
+
 // Export functions for global access
 window.validateContactForm = validateContactForm;
 window.submitContactForm = submitContactForm;
+window.trackFormSubmission = trackFormSubmission;

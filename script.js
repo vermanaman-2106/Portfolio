@@ -122,13 +122,31 @@ function setupContactForm() {
     
     if (!modal || !form) return;
 
-    // Form submission
+    // Form submission - let Formspree handle it naturally
     form.addEventListener('submit', function(e) {
-        e.preventDefault();
+        // Don't prevent default - let Formspree handle the submission
+        // Just add our enhanced UI feedback
         
-        if (validateForm(form)) {
-            submitForm(form);
+        if (!validateEntireForm(form)) {
+            e.preventDefault();
+            showNotification('Please fix the errors before submitting.', 'error');
+            return;
         }
+        
+        // Show loading state
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
+        
+        submitButton.innerHTML = `
+            <div class="flex items-center justify-center">
+                <div class="loading-spinner mr-3"></div>
+                <span>Sending your request...</span>
+            </div>
+        `;
+        submitButton.disabled = true;
+        
+        // Track the submission
+        trackFormSubmission(form, new FormData(form));
     });
 
     // Close modal when clicking outside
@@ -470,7 +488,24 @@ function checkFormspreeSuccess() {
 // Initialize Formspree success check
 document.addEventListener('DOMContentLoaded', function() {
     checkFormspreeSuccess();
+    setupFormspreeReplyTo();
 });
+
+// Setup dynamic reply-to field for Formspree
+function setupFormspreeReplyTo() {
+    const forms = document.querySelectorAll('form[action*="formspree.io"]');
+    
+    forms.forEach(form => {
+        const emailInput = form.querySelector('input[type="email"]');
+        const replyToField = form.querySelector('input[name="_replyto"]');
+        
+        if (emailInput && replyToField) {
+            emailInput.addEventListener('input', function() {
+                replyToField.value = this.value;
+            });
+        }
+    });
+}
 
 // Show notification
 function showNotification(message, type = 'info') {
@@ -573,8 +608,8 @@ function setupPricingModal() {
         const submitBtn = form.querySelector('button[type="submit"]');
         const submitText = submitBtn.querySelector('.submit-text');
         const loadingText = submitBtn.querySelector('.loading-text');
-        submitText.classList.remove('hidden');
-        loadingText.classList.add('hidden');
+        if (submitText) submitText.classList.remove('hidden');
+        if (loadingText) loadingText.classList.add('hidden');
         submitBtn.disabled = false;
     }
     
@@ -596,41 +631,34 @@ function setupPricingModal() {
         }
     });
     
-    // Form submission
+    // Form submission - let Formspree handle it naturally
     form.addEventListener('submit', function(e) {
-        e.preventDefault();
+        // Don't prevent default - let Formspree handle the submission
+        // Just add our enhanced UI feedback
         
+        if (!validateEntireForm(form)) {
+            e.preventDefault();
+            showNotification('Please fix the errors before submitting.', 'error');
+            return;
+        }
+        
+        // Show loading state
         const submitBtn = this.querySelector('button[type="submit"]');
         const submitText = submitBtn.querySelector('.submit-text');
         const loadingText = submitBtn.querySelector('.loading-text');
         
-        // Show loading state
-        submitText.classList.add('hidden');
-        loadingText.classList.remove('hidden');
+        if (submitText) submitText.classList.add('hidden');
+        if (loadingText) loadingText.classList.remove('hidden');
         submitBtn.disabled = true;
         
-        // Simulate form submission
-        setTimeout(() => {
-            // Hide form and show success message
-            form.classList.add('hidden');
-            successDiv.classList.remove('hidden');
-            successDiv.classList.add('show');
-            
-            // Reset button state
-            submitText.classList.remove('hidden');
-            loadingText.classList.add('hidden');
-            submitBtn.disabled = false;
-            
-            // Log form data (in real implementation, send to server)
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
-            console.log('Pricing form submitted:', {
-                ...data,
-                selectedPlan: planName.textContent,
-                selectedPrice: planPrice.textContent
-            });
-            
-        }, 2000);
+        // Track the submission
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+        trackFormSubmission(form, {
+            ...data,
+            selectedPlan: planName.textContent,
+            selectedPrice: planPrice.textContent
+        });
     });
     
     // Form validation
