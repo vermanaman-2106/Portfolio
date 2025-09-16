@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" href="styles.css" as="style">
     <link rel="stylesheet" href="styles.css">
     <script>
         tailwind.config = {
@@ -128,6 +129,7 @@
                             muted 
                             loop 
                             playsinline
+                            preload="metadata"
                         >
                             <source src="herosection.mp4" type="video/mp4">
                             Your browser does not support the video tag.
@@ -424,7 +426,7 @@
                         <div class="portfolio-slide w-full flex-shrink-0">
                             <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-2xl">
                                 <div class="h-96 relative overflow-hidden">
-                                    <img src="INTERIOR.png" alt="TechStart Solutions Project" class="w-full h-full object-cover">
+                                    <img src="INTERIOR.png" alt="TechStart Solutions Project" class="w-full h-full object-cover" loading="lazy" decoding="async">
                                     <div class="absolute inset-0 bg-black/20"></div>   
                                 </div>
                                 <div class="p-8">
@@ -444,7 +446,7 @@
                         <div class="portfolio-slide w-full flex-shrink-0">
                             <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-2xl">
                                 <div class="h-96 relative overflow-hidden">
-                                    <img src="GYM.png" alt="Fashion Store Project" class="w-full h-full object-cover">
+                                    <img src="GYM.png" alt="Fashion Store Project" class="w-full h-full object-cover" loading="lazy" decoding="async">
                                     <div class="absolute inset-0 bg-black/20"></div>
                                     
                                 </div>
@@ -465,7 +467,7 @@
                         <div class="portfolio-slide w-full flex-shrink-0">
                             <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-2xl">
                                 <div class="h-96 relative overflow-hidden">
-                                    <img src="enginners&builder.png" alt="Fashion Store Project" class="w-full h-full object-cover">
+                                    <img src="enginners&builder.png" alt="Fashion Store Project" class="w-full h-full object-cover" loading="lazy" decoding="async">
                                     <div class="absolute inset-0 bg-black/20"></div>
                                     
                                 </div>
@@ -486,7 +488,7 @@
                         <div class="portfolio-slide w-full flex-shrink-0">
                             <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-2xl">
                                 <div class="h-96 relative overflow-hidden">
-                                    <img src="BAKERY.png" alt="Fashion Store Project" class="w-full h-full object-cover">
+                                    <img src="BAKERY.png" alt="Fashion Store Project" class="w-full h-full object-cover" loading="lazy" decoding="async">
                                     <div class="absolute inset-0 bg-black/20"></div>
                                     
                                 </div>
