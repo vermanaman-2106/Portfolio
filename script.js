@@ -1190,7 +1190,174 @@ function setupTestimonialsCarousel() {
     window.addEventListener('resize', updateCarousel);
 }
 
-// Portfolio Slider
+// Enhanced Portfolio Section
+function setupPortfolioSection() {
+    // Portfolio card animations
+    const portfolioCards = document.querySelectorAll('.portfolio-card');
+    
+    // Intersection Observer for portfolio animations
+    const portfolioObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 200); // Staggered animation
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    portfolioCards.forEach(card => {
+        card.classList.add('portfolio-animate');
+        portfolioObserver.observe(card);
+    });
+    
+    // Enhanced hover effects for portfolio cards
+    portfolioCards.forEach(card => {
+        const image = card.querySelector('img');
+        const overlay = card.querySelector('.absolute.inset-0');
+        const content = card.querySelector('.text-white');
+        
+        if (image) {
+            image.addEventListener('mouseenter', () => {
+                image.style.transform = 'scale(1.1)';
+                image.style.filter = 'brightness(1) contrast(1.2) saturate(1.3)';
+            });
+            
+            image.addEventListener('mouseleave', () => {
+                image.style.transform = 'scale(1)';
+                image.style.filter = 'brightness(0.9) contrast(1.1) saturate(1.1)';
+            });
+        }
+        
+        // Parallax effect on mouse move
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+        });
+    });
+    
+    // Stats counter animation
+    const statsCards = document.querySelectorAll('.stats-card');
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const numberElement = entry.target.querySelector('.text-4xl');
+                if (numberElement) {
+                    animateCounter(numberElement);
+                }
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    statsCards.forEach(card => {
+        card.classList.add('portfolio-animate');
+        statsObserver.observe(card);
+    });
+    
+    // Technology tags hover effect
+    const techTags = document.querySelectorAll('.bg-white\\/20');
+    techTags.forEach(tag => {
+        tag.classList.add('tech-tag');
+        tag.addEventListener('mouseenter', () => {
+            tag.style.transform = 'translateY(-2px) scale(1.05)';
+            tag.style.background = 'rgba(255, 255, 255, 0.4)';
+        });
+        
+        tag.addEventListener('mouseleave', () => {
+            tag.style.transform = 'translateY(0) scale(1)';
+            tag.style.background = 'rgba(255, 255, 255, 0.2)';
+        });
+    });
+    
+    // Category badges hover effect
+    const categoryBadges = document.querySelectorAll('.bg-accent\\/90, .bg-green-500\\/90, .bg-orange-500\\/90, .bg-pink-500\\/90');
+    categoryBadges.forEach(badge => {
+        badge.classList.add('category-badge');
+    });
+    
+    // Enhanced button effects
+    const portfolioButtons = document.querySelectorAll('.portfolio-btn, .bg-white.text-primary, .border-2.border-white');
+    portfolioButtons.forEach(button => {
+        button.classList.add('portfolio-btn');
+        
+        // Ripple effect
+        button.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+    
+    // Floating background elements
+    const floatingElements = document.querySelectorAll('.absolute.-top-40, .absolute.-bottom-40, .absolute.top-1\\/2');
+    floatingElements.forEach((element, index) => {
+        element.classList.add('floating-bg');
+        element.style.animationDelay = `${index * 2}s`;
+    });
+    
+    // Gradient text animation
+    const gradientTexts = document.querySelectorAll('.bg-gradient-to-r');
+    gradientTexts.forEach(text => {
+        if (text.classList.contains('bg-clip-text')) {
+            text.classList.add('gradient-text');
+        }
+    });
+}
+
+// Counter animation function
+function animateCounter(element) {
+    const target = parseInt(element.textContent.replace(/\D/g, ''));
+    const duration = 2000;
+    const start = performance.now();
+    
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - start;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const current = Math.floor(progress * target);
+        const suffix = element.textContent.replace(/\d/g, '').replace(/[^\+\%]/g, '');
+        
+        element.textContent = current + suffix;
+        
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        }
+    }
+    
+    requestAnimationFrame(updateCounter);
+}
+
+// Portfolio Slider (keeping for backward compatibility)
 function setupPortfolioSlider() {
     const track = document.querySelector('.portfolio-track');
     const slides = document.querySelectorAll('.portfolio-slide');
@@ -1300,6 +1467,7 @@ function initializeEnhancedAnimations() {
     setupEnhancedButtons();
     setupTestimonialsCarousel();
     setupPortfolioSlider();
+    setupPortfolioSection(); // New enhanced portfolio section
     setupFormEnhancements();
     
     // Add loading states to forms

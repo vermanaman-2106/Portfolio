@@ -1425,79 +1425,76 @@ input[type="checkbox"] {
     }
 }
 
-/* Portfolio Slider Styling */
-.portfolio-slider {
-    position: relative;
-}
-
-.portfolio-container {
+/* Enhanced Portfolio Section Styling */
+.portfolio-card {
     position: relative;
     overflow: hidden;
-    border-radius: 16px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    border-radius: 24px;
+    transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.portfolio-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+.portfolio-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(86, 130, 177, 0.1) 0%, rgba(115, 158, 201, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
 }
 
-.portfolio-slide {
-    min-height: 600px;
+.portfolio-card:hover::before {
+    opacity: 1;
 }
 
-.portfolio-slide .bg-white {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+.portfolio-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(86, 130, 177, 0.2);
 }
 
-.portfolio-slide .h-96 {
-    flex-shrink: 0;
+/* Portfolio Image Effects */
+.portfolio-card img {
+    transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: brightness(0.9) contrast(1.1);
 }
 
-.portfolio-slide .p-8 {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.portfolio-card:hover img {
+    filter: brightness(1) contrast(1.2);
+    transform: scale(1.1);
 }
 
-/* Navigation Controls */
-.portfolio-prev,
-.portfolio-next {
+/* Portfolio Overlay Animations */
+.portfolio-card .absolute.inset-0 {
+    transition: all 0.5s ease;
+}
+
+.portfolio-card:hover .absolute.inset-0 {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+/* Technology Tags Animation */
+.portfolio-card .bg-white\/20 {
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 }
 
-.portfolio-prev:hover,
-.portfolio-next:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+.portfolio-card:hover .bg-white\/20 {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
 }
 
-.portfolio-dot {
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.portfolio-dot.active {
-    background-color: #5682B1 !important;
-    transform: scale(1.2);
-}
-
-.portfolio-dot:hover {
-    transform: scale(1.1);
-}
-
-/* Enhanced button styling */
-.portfolio-slide button {
-    transition: all 0.3s ease;
+/* Stats Cards Animation */
+.stats-card {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
 }
 
-.portfolio-slide button::before {
+.stats-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -1505,43 +1502,255 @@ input[type="checkbox"] {
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s ease;
+    transition: left 0.6s ease;
 }
 
-.portfolio-slide button:hover::before {
+.stats-card:hover::before {
     left: 100%;
 }
 
-/* Mobile responsive adjustments for portfolio */
+.stats-card:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(86, 130, 177, 0.15);
+}
+
+/* CTA Section Enhancements */
+.cta-gradient {
+    background: linear-gradient(135deg, #5682B1 0%, #739EC9 50%, #FFE8DB 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-gradient::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Portfolio Grid Animations */
+.portfolio-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.portfolio-item {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: portfolioFadeIn 0.8s ease forwards;
+}
+
+.portfolio-item:nth-child(1) { animation-delay: 0.1s; }
+.portfolio-item:nth-child(2) { animation-delay: 0.2s; }
+.portfolio-item:nth-child(3) { animation-delay: 0.3s; }
+.portfolio-item:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes portfolioFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced Hover Effects */
+.portfolio-card .group:hover .absolute.inset-0 {
+    background: linear-gradient(135deg, rgba(86, 130, 177, 0.9) 0%, rgba(115, 158, 201, 0.9) 100%);
+}
+
+.portfolio-card .group:hover .text-white {
+    transform: translateY(-10px);
+}
+
+.portfolio-card .group:hover .bg-white\/20 {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px);
+}
+
+/* Mobile Responsive Enhancements */
 @media (max-width: 768px) {
-    .portfolio-slide {
-        min-height: 500px;
+    .portfolio-card {
+        margin-bottom: 1.5rem;
     }
     
-    .portfolio-slide .h-96 {
-        height: 250px;
+    .portfolio-card:hover {
+        transform: translateY(-4px) scale(1.01);
     }
     
-    .portfolio-slide .p-8 {
-        padding: 1.5rem;
+    .stats-card {
+        margin-bottom: 1rem;
     }
     
-    .portfolio-slide h3 {
-        font-size: 1.5rem;
+    .stats-card:hover {
+        transform: translateY(-3px) scale(1.03);
     }
     
-    .portfolio-slide p {
-        font-size: 1rem;
+    .cta-gradient {
+        padding: 2rem 1rem;
     }
     
-    .portfolio-prev,
-    .portfolio-next {
-        padding: 0.5rem;
+    .cta-gradient h3 {
+        font-size: 1.875rem;
     }
     
-    .portfolio-dots {
-        margin: 0 0.5rem;
+    .cta-gradient p {
+        font-size: 1.125rem;
     }
+}
+
+/* Enhanced Shadow Effects */
+.shadow-3xl {
+    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Gradient Text Animation */
+.gradient-text {
+    background: linear-gradient(135deg, #5682B1 0%, #739EC9 50%, #FFE8DB 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Floating Animation for Background Elements */
+.floating-bg {
+    animation: float 6s ease-in-out infinite;
+}
+
+.floating-bg:nth-child(2) {
+    animation-delay: 2s;
+}
+
+.floating-bg:nth-child(3) {
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-20px) rotate(1deg); }
+    66% { transform: translateY(-10px) rotate(-1deg); }
+}
+
+/* Enhanced Button Styles */
+.portfolio-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.portfolio-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.portfolio-btn:hover::before {
+    left: 100%;
+}
+
+.portfolio-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(86, 130, 177, 0.3);
+}
+
+/* Technology Tags Hover Effect */
+.tech-tag {
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.tech-tag:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Project Category Badges */
+.category-badge {
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.category-badge:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced Grid Layout */
+.portfolio-grid-enhanced {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+    align-items: start;
+}
+
+.portfolio-featured {
+    grid-column: span 12;
+}
+
+.portfolio-regular {
+    grid-column: span 6;
+}
+
+@media (max-width: 1024px) {
+    .portfolio-regular {
+        grid-column: span 12;
+    }
+}
+
+/* Scroll-triggered Animations */
+.portfolio-animate {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.portfolio-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enhanced Image Loading */
+.portfolio-image {
+    transition: all 0.7s ease;
+    filter: brightness(0.9) contrast(1.1) saturate(1.1);
+}
+
+.portfolio-image:hover {
+    filter: brightness(1) contrast(1.2) saturate(1.3);
+    transform: scale(1.05);
+}
+
+/* Loading State for Images */
+.portfolio-image.loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
 
